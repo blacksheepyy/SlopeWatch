@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# IDE files
+.idea/
+.vscode/
+*.pyproj
+*.iml
+
+# Local development configuration files
+.env
+.env.local
+
+# Miscellaneous
+*.swp
+Thumbs.db
+.DS_Store
