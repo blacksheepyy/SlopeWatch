@@ -40,8 +40,8 @@ if st.button("Start"):
             parents=True, exist_ok=True
         )
     while running:
-        url = "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2tpfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-        # url = "https://webcam.thesnowcentre.com/record/current.jpg"
+        # url = "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2tpfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+        url = "https://webcam.thesnowcentre.com/record/current.jpg"
 
         save_path = f"images/{st.session_state.get('current_date')}/{i}.jpg"
         download_image(url, save_path)
@@ -55,11 +55,11 @@ if st.button("Start"):
         st.write("Image download stopped.")
         video_converter(
             path=f"images/{st.session_state.get('current_date')}",
-            output_dir="videos",
+            output_dir="videos/raw",
         )
 
 # assign directory
-directory = "videos"
+directory = "videos/converted"
 # Max number of videos to show
 limit = 10
 
@@ -70,7 +70,7 @@ files.sort(key=lambda x: os.path.getmtime(x), reverse=True)
 
 for item in islice(files, limit):
     _, file_extension = os.path.splitext(item)
-    logger.debug(file_extension)
+    
     if file_extension == ".mp4":
         video_file = open(
             item,
